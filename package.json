@@ -3,15 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.1.3",
+    "bootstrap-sass": "^3.3.7",
+    "node-sass": "^4.9.3",
+    "nodemon": "^1.18.4",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-css": "node-sass --include-path scss src/scss/custom.scss src/App.css",
+    "watch-css": "nodemon --ignore 'node-modules/*' -e scss -x \"npm run build-css\""
   },
   "eslintConfig": {
     "extends": "react-app"
