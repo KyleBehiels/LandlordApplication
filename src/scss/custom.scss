@@ -7,6 +7,33 @@ $color3: rgba(183, 206, 206, 1);
 $color4: rgba(46, 64, 82, 1);
 $color5: rgba(226, 226, 226, 1);
 
+@keyframes slide_down {
+    from{ height: 0px; }
+    to {height: auto;}
+}
+
+@keyframes slide_up {
+    from {height: auto;}
+    to {height: 0px;}
+}
+
+#signup_button{
+    width: 100%;
+}
+
+#signup_form{
+    margin-top: 15px;
+    height: auto;
+}
+
+.header{
+    margin: 15px;
+}
+
+.hidden{
+    display: none;
+}
+
 .navbar {
     background-color: $color4!important;
 
@@ -16,6 +43,9 @@ $color5: rgba(226, 226, 226, 1);
     Link{
         color: $color5!important;
     }
+    .nav-item{
+        padding: 3px;
+    }
     .active{
         color: $color4!important;
         background-color: $color2;
@@ -24,4 +54,21 @@ $color5: rgba(226, 226, 226, 1);
         }
     }
     
+}
+
+
+@media all and (min-width:769px)  {
+    #login_card{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+  
+@media all and (min-width:0px) and (max-width: 768px) {
+    #login_card{
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
