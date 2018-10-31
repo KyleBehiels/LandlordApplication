@@ -45,11 +45,13 @@ class LoginPage extends Component{
                                     <br></br>
                                     <input className="form-control" type="password" placeholder="Password"></input>
                                 </div>
-                                <input className="form-control btn btn-primary" type="submit" value="Submit"></input>
+                                <input className="form-control btn btn-primary" type="submit" value="Sign In"></input>
                             </form>
                             <hr></hr>
                             <button id="signup_button" className="btn btn-secondary" onClick={this.toggleSignup}>Don't have an account?</button>
                             <form id="signup_form" className="hidden">
+                                <h2>Sign Up</h2>
+                                <hr></hr>
                                 <div className="form-group">
                                     <input className="form-control" type="text" placeholder="Email"></input>
                                     <br></br>
@@ -57,6 +59,7 @@ class LoginPage extends Component{
                                     <br></br>
                                     <input className="form-control" type="password" placeholder="Confirm"></input>
                                 </div>
+                                <input className="form-control btn btn-primary" type="submit" value="Sign Up"></input>
                             </form>
                         </div>
                     </div>
