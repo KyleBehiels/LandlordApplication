@@ -6311,3 +6311,16 @@ a.text-dark:hover, a.text-dark:focus {
   .table .thead-dark th {
     color: inherit;
     border-color: #dee2e6; } }
+
+/* RGB */
+.navbar {
+  background-color: #2e4052 !important; }
+  .navbar a {
+    color: #e2e2e2 !important; }
+  .navbar Link {
+    color: #e2e2e2 !important; }
+  .navbar .active {
+    color: #2e4052 !important;
+    background-color: #6e7e85; }
+    .navbar .active Link {
+      color: #2e4052 !important; }

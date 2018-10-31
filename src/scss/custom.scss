@@ -1,1 +1,27 @@
 @import "node_modules/bootstrap/scss/bootstrap";
+
+/* RGB */
+$color1: rgba(255, 255, 255, 1);
+$color2: rgba(110, 126, 133, 1);
+$color3: rgba(183, 206, 206, 1);
+$color4: rgba(46, 64, 82, 1);
+$color5: rgba(226, 226, 226, 1);
+
+.navbar {
+    background-color: $color4!important;
+
+    a{
+        color: $color5!important;
+    }
+    Link{
+        color: $color5!important;
+    }
+    .active{
+        color: $color4!important;
+        background-color: $color2;
+        Link{
+            color: $color4!important;
+        }
+    }
+    
+}
