@@ -30,3 +30,7 @@ Allowing us to edit and change certain elements.
 SaSS (.scss extension) code will be compiled using the [node-sass](https://www.npmjs.com/package/node-sass) and [nodemon](https://nodemon.io/) libraries. Scripts already exist inside the package.json file to automatically monitor, compile and reload the local development server when any file inside the `scss` directory is changed. 
 
 ### Development Server and SaSS monitoring 
+
+NodeJS packages it's own development server for use with react applications. To start it simply run the command `npm start` from the project directory. This should open the web application in your systems default browser. 
+
+If you want to monitor changes in SaSS, you need to start the nodesass compiler from the same directory. To do that run `npm run watch-css`
