@@ -6338,6 +6338,9 @@ a.text-dark:hover, a.text-dark:focus {
 .hidden {
   display: none; }
 
+.full-width {
+  width: 100%; }
+
 .navbar {
   background-color: #2e4052 !important; }
   .navbar a {

@@ -42,7 +42,6 @@ class LoginPage extends Component{
 
         firebase.auth().signInWithEmailAndPassword(signinUsername.value, signinPassword.value).then(() => {
             // Gucci
-            alert("Logged in!");
             this.props.loginFunction(true);
         }).catch((error) => {
             alert(error.message);

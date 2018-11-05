@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import firebase from '../components/firebase';
 import Dashboard from '../pages/Dashboard';
+import PropertiesPage from '../pages/PropertiesPage';
+import TenantsPage from '../pages/TenantsPage';
+import AnalyticsPage from '../pages/AnalyticsPage';
+import WorkOrdersPage from '../pages/WorkOrdersPage';
 
 const Index = () => <Dashboard></Dashboard>;
-const Properties = () => <h2>Properties</h2>;
-const Tenants = () => <h2>Tenants</h2>;
-const Analytics = () => <h2>Analytics</h2>;
-const WorkOrders = () => <h2>WorkOrders</h2>;
+const Properties = () => <PropertiesPage></PropertiesPage>;
+const Tenants = () => <TenantsPage></TenantsPage>;
+const Analytics = () => <AnalyticsPage></AnalyticsPage>;
+const WorkOrders = () => <WorkOrdersPage></WorkOrdersPage>;
 
 let onDashboard = false, onProperties = false, onTenants = false, onAnalytics = false, onWorkOrders = false; 
 
