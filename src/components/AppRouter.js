@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import firebase from '../components/firebase';
 
 const Index = () => <h2>Dashboard</h2>;
 const Properties = () => <h2>Properties</h2>;
@@ -16,6 +17,7 @@ class AppRouter extends Component {
     super(props);
     let err = 1;
     this.onPageChange = this.onPageChange.bind(this);
+    this.logout = this.logout.bind(this);
     this.state={
       onDashboard : "active",
       onProperties : "",
@@ -83,6 +85,13 @@ class AppRouter extends Component {
     }
   }
 
+  logout(){
+    if(window.confirm('Are you sure you want to log out?')){
+      firebase.auth().signOut();
+      this.props.loginFunction(false);
+    }
+  }
+
   render(){
     return (
       <Router>
@@ -110,6 +119,9 @@ class AppRouter extends Component {
                 <Link onClick={() => this.onPageChange("WorkOrders")} className="nav-link" to="/WorkOrders">WorkOrders</Link>
               </li>
             </ul>
+            <span className="ml-auto">
+              <button onClick={this.logout} className="float-right btn btn-primary">Logout</button>
+            </span>
             </div>
           </nav>
 
