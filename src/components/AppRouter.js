@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import firebase from '../components/firebase';
+import Dashboard from '../pages/Dashboard';
 
-const Index = () => <h2>Dashboard</h2>;
+const Index = () => <Dashboard></Dashboard>;
 const Properties = () => <h2>Properties</h2>;
 const Tenants = () => <h2>Tenants</h2>;
 const Analytics = () => <h2>Analytics</h2>;

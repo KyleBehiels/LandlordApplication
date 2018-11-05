@@ -7,6 +7,8 @@ import './App.css';
 import AppRouter from './components/AppRouter';
 import LoginPage from './pages/LoginPage';
 import firebase from './components/firebase';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class App extends Component { 
 
@@ -41,6 +43,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
           <link rel="stylesheet" href="./App.css"></link>
+          <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossOrigin="anonymous"></link>
           </header>
           <div className="container">
             <AppRouter loginFunction={this.setLoggedInVal}></AppRouter>
