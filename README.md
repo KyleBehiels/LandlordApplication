@@ -5,9 +5,9 @@ A web application that allows landlords to manage tenants. Developed for COMP 31
 
 ## Development
 
-### Getting this repository on your local machine.
 
 ## First time cloning the repository
+
 
 1. Install git from [here](https://git-scm.com/downloads) for your system. Git itself is open source and will not ask you to install any bloatware. For that reason it is ok to click ok through the installation.
 
@@ -24,7 +24,7 @@ A web application that allows landlords to manage tenants. Developed for COMP 31
 6. Start watching `SaSS` files for changes, and compiling if found by running `npm run watch-css`
 
 7. Start the development server with `npm start`. This should open the application in your default web browser.
-
+    If this fails see the installing npm section of this readme
 8. Open a text editor (I recommend [Visual Studio Code](https://code.visualstudio.com/) or [Sublime](https://www.sublimetext.com/).) Use your text editor to add the root folder (LandlordApplication) to your project workspace.
 
 ## Making changes to the code
@@ -39,7 +39,10 @@ A web application that allows landlords to manage tenants. Developed for COMP 31
     - `git push origin master` push the changes to the communal repository (communal)
 
 
+### Getting this repository on your local machine.
+
 ### Installing NodeJS and NPM
+
 
 For Windows and Mac - Download and install the executables from [here](https://nodejs.org/en/download/)
 Linux - Should be in your package manager but check [here](https://nodejs.org/en/download/package-manager/)
