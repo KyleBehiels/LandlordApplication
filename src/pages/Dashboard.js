@@ -3,13 +3,22 @@ import React,{Component} from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import firebase from '../components/firebase';
+
 import {faBell} from '@fortawesome/free-solid-svg-icons';
 import {faCalendar} from '@fortawesome/free-solid-svg-icons';
 
 library.add(faBell);
 library.add(faCalendar);
 
+let firebase_database;
+
 class Dashboard extends Component{
+
+    constructor(){
+        super();
+        firebase_database = firebase.database();
+    }
 
 
     render(){

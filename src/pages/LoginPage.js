@@ -109,6 +109,16 @@ class LoginPage extends Component{
                                 <h2>Sign Up</h2>
                                 <hr></hr>
                                 <div className="form-group">
+                                    <label>Name</label>
+                                    <div className="row">
+                                        <div className="col-6">
+                                            <input id="signupFirstName" className="form-control" type="text" placeholder="First"></input>
+                                        </div>
+                                        <div className="col-6">
+                                            <input id="signupLastName" className="form-control" type="text" placeholder="Last"></input>
+                                        </div>
+                                    </div>
+                                    <br></br>
                                     <input id="signupUsername" className="form-control" type="text" placeholder="Email"></input>
                                     <br></br>
                                     <input id="signupPassword" className="form-control" type="password" placeholder="Password"></input>

@@ -10,9 +10,10 @@ import firebase from './components/firebase';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-class App extends Component { 
+class App extends Component {
 
-  constructor(){
+
+    constructor(){
     super();
     this.loginCheck = this.loginCheck.bind(this);
     this.setLoggedInVal = this.setLoggedInVal.bind(this);
@@ -28,17 +29,25 @@ class App extends Component {
   }
 
 
-  componentDidMount(){
-    if(firebase.auth().currentUser !== undefined){
+  componentWillMount(){
+    
+    if(firebase.auth().currentUser !== null){
       this.setLoggedInVal(true);
     }
     else{
       this.setLoggedInVal(false);
     }
+    
+    console.log(this.state.loggedIn);
+    
+    
   }
 
   loginCheck(){
+    console.log(this.state.loggedIn);
+    
     if(this.state.loggedIn){
+      // console.log(firebase.auth().currentUser.uid);
       return (
         <div className="App">
           <header className="App-header">
