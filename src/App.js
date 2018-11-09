@@ -62,7 +62,7 @@ class App extends Component {
     }
     else {
       return (
-        <LoginPage loginFunction={this.setLoggedInVal}></LoginPage>
+        <LoginPage name="Kyle" loginFunction={this.setLoggedInVal}></LoginPage>
       );
     }
   }

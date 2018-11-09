@@ -54,6 +54,9 @@ class LoginPage extends Component{
         let signupPassword = document.getElementById('signupPassword');
         let signupConfirm = document.getElementById('signupConfirm');
         let signupUsername = document.getElementById('signupUsername');
+        let signupFirstName = document.getElementById('signupFirstName');
+        let signupLastName = document.getElementById('signupLastName');
+
 
         
         if((signupUsername.value !== "") && (signupPassword.value !== "") && (signupPassword.value === signupConfirm.value)){
@@ -63,6 +66,17 @@ class LoginPage extends Component{
             firebase.auth().createUserWithEmailAndPassword(signupUsername.value, signupPassword.value).then(()=>{
                 alert("Success");
                 this.props.loginFunction(true);
+
+                let database = firebase.database();
+                let userId = firebase.auth().currentUser.uid;
+                let ref = database.ref('landlords/'+userId);
+
+                ref.set({
+                    email: signupUsername.value,
+                    firstname: signupFirstName.value,
+                    lastname: signupLastName.value
+                });
+
             }).catch((error) => {
                 let errorCode = error.code;
                 let errorMessage = error.message;
