@@ -25,7 +25,7 @@ class Dashboard extends Component{
         return(
             <div>
                 <div className="jumbotron">
-                    <h2>Dashboard</h2>
+                    <h2>Hello</h2>
                     <hr></hr>
                     <p>Hello Landlord, this is your Dashboard! From here you can see notifications and important information. Take a look around!</p>
                     
