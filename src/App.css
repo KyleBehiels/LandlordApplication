@@ -6328,6 +6328,9 @@ a.text-dark:hover, a.text-dark:focus {
 #signup_button {
   width: 100%; }
 
+.work_order_text {
+  color: #888; }
+
 #signup_form {
   margin-top: 15px;
   height: auto; }
