@@ -20,6 +20,13 @@ class App extends Component {
     this.state = {
       loggedIn: false
     }
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user)this.setState({loggedIn:true});
+      else this.setState({loggedIn:false});
+    }
+    );
+
   }
 
   setLoggedInVal(loggedIn){
@@ -30,21 +37,13 @@ class App extends Component {
 
 
   componentDidMount(){
-    
-    if(firebase.auth().currentUser !== null){
-      this.setLoggedInVal(true);
-    }
-    else{
-      this.setLoggedInVal(false);
-    }
-    
-    console.log(this.state.loggedIn);
+
+    console.log(firebase.auth().currentUser);
     
     
   }
 
   loginCheck(){
-    console.log(this.state.loggedIn);
     
     if(this.state.loggedIn){
       // console.log(firebase.auth().currentUser.uid);
@@ -68,11 +67,24 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div>
-        {this.loginCheck()}
-      </div>
-    );
+    if(this.state.loggedIn){
+      return (
+        <div className="App">
+          <header className="App-header">
+          <link rel="stylesheet" href="./App.css"></link>
+          <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossOrigin="anonymous"></link>
+          </header>
+          <div className="container">
+            <AppRouter loginFunction={this.setLoggedInVal}></AppRouter>
+          </div>
+        </div>
+      );
+    }
+    else{
+      return (
+        <LoginPage name="Kyle" loginFunction={this.setLoggedInVal}></LoginPage>
+      );
+    }
   }
 }
 
