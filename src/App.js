@@ -29,7 +29,7 @@ class App extends Component {
   }
 
 
-  componentWillMount(){
+  componentDidMount(){
     
     if(firebase.auth().currentUser !== null){
       this.setLoggedInVal(true);
