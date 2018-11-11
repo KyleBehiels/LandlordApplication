@@ -124,18 +124,23 @@ class Dashboard extends Component{
         let eventDescription = document.getElementById("event_description").value;
         let eventLocation = document.getElementById("event_location").value;
         let eventType = document.getElementById("event_type").value;
-        let eventKey = this.hashCode(eventDescription) + this.hashCode(eventDate) + this.hashCode(eventLocation) + this.hashCode(eventType);
 
-        firebase.database().ref("/landlords/" + userId + "/events/" + eventKey).set({
-            description: eventDescription,
-            time: eventDate,
-            type: eventType,
-            location: eventLocation 
-        });
+        if(eventDate != "" && eventDescription != "" && eventLocation != "" && eventType != ""){
 
-        console.log(eventDate);
+            let eventKey = this.hashCode(eventDescription) + this.hashCode(eventDate) + this.hashCode(eventLocation) + this.hashCode(eventType);
 
-        this.toggleNewEventBox();
+            firebase.database().ref("/landlords/" + userId + "/events/" + eventKey).set({
+                description: eventDescription,
+                time: eventDate,
+                type: eventType,
+                location: eventLocation 
+            });
+
+            console.log(eventDate);
+
+            this.toggleNewEventBox();
+        }
+
 
     }
     // Not a real hash but guarantees a unique ID
@@ -155,7 +160,7 @@ class Dashboard extends Component{
         let eventBox = document.getElementById("new_event_box");
         let btnText = toggleButton.innerHTML;
 
-        if(btnText == "+"){
+        if(btnText == "Add Event +"){
             eventBox.classList.remove("hidden");
             toggleButton.classList.remove("btn-primary");
             toggleButton.classList.add("btn-danger");
@@ -164,7 +169,7 @@ class Dashboard extends Component{
             eventBox.classList.add("hidden");
             toggleButton.classList.remove("btn-danger");
             toggleButton.classList.add("btn-primary");
-            toggleButton.innerHTML = "+";
+            toggleButton.innerHTML = "Add Event +";
         }
     }
 
@@ -194,7 +199,7 @@ class Dashboard extends Component{
                         <div className="col-sm-12 col-md-6">
                             <div className="card">
                                 <div className="card-body">
-                                    <h2 className="card-title"><FontAwesomeIcon icon="calendar"></FontAwesomeIcon> Upcoming Events <button onClick={this.toggleNewEventBox} id="new_event_button" className="btn float-right btn-primary">+</button> </h2>
+                                    <h2 className="card-title"><FontAwesomeIcon icon="calendar"></FontAwesomeIcon> Upcoming Events <button onClick={this.toggleNewEventBox} id="new_event_button" className="btn float-right btn-primary">Add Event +</button> </h2>
                                     <div id="new_event_box" className="form-group hidden">
                                         <label htmlFor="event_type">Type</label>
                                         <select id="event_type" className="form-control">
