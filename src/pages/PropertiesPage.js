@@ -40,7 +40,7 @@ class PropertiesPage extends Component{
     }
  
     submitNewProperty(){
-<<<<<<< Updated upstream
+
         let address = document.getElementById('addressInput').value;
         let delinquent = document.getElementById('delinquentInput').value;
         let paid = document.getElementById('paidTotalInput').value;
@@ -59,10 +59,6 @@ class PropertiesPage extends Component{
             });
 
         }
-=======
-        let address = document.getElementById('addressInput').nodeValue;
-        let delinquent = document.getElementById('delinquentInput').nodeValue;
->>>>>>> Stashed changes
 
     }
      // Not a real hash but guarantees a unique ID
