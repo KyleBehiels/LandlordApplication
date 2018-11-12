@@ -6328,13 +6328,34 @@ a.text-dark:hover, a.text-dark:focus {
 .prop-btn {
   margin: 10px; }
 
+.category-bold {
+  color: black !important; }
+
 .prop-field {
   margin: 10px;
   margin-right: 20px;
   margin-left: 0px; }
 
+.blanket {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.3); }
+
+.modal-content {
+  position: absolute;
+  top: 20vh;
+  left: 30vw;
+  width: 40vw;
+  height: 60vh;
+  background-color: #FFF;
+  z-index: 1001; }
+
 .subtitle {
-  color: #BBB; }
+  color: #999; }
 
 .prop_card {
   margin: 15px !important; }

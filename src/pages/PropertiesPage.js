@@ -19,6 +19,7 @@ class PropertiesPage extends Component{
         userId = firebase.auth().currentUser.uid;
         userRef = firebase.database().ref("/landlords/" + userId);
         this.togglePropertyForm = this.togglePropertyForm.bind(this);
+        this.submitNewProperty = this.submitNewProperty.bind(this);
     }
 
     togglePropertyForm(){
@@ -37,13 +38,39 @@ class PropertiesPage extends Component{
             togglePropertyFormButton.innerHTML = "Add Property +";
         }
     }
-
+ 
     submitNewProperty(){
-        let address = document.getElementById('addressInput').nodeValue;
-        let delinquent = document.getElementById('delinquentInput').nodeValue;
-        let address = document.getElementById('addressInput').nodeValue;
-        let address = document.getElementById('addressInput').nodeValue;
+        let address = document.getElementById('addressInput').value;
+        let delinquent = document.getElementById('delinquentInput').value;
+        let paid = document.getElementById('paidTotalInput').value;
+        let rent = document.getElementById('rentTotalInput').value;
+        let workOrders = document.getElementById('workOrderInput').value;
+
+        if(address !== "" && delinquent !== "" && paid !== "" && rent !== "" && workOrders !== ""){
+            let propertyKey = this.hashCode(address) + this.hashCode(delinquent) + this.hashCode(paid) + this.hashCode(rent) + this.hashCode(workOrders);
+
+            firebase.database().ref('/landlords/' + userId + '/properties/' + propertyKey).set({
+                address: address,
+                delinquent_tenants: delinquent,
+                paid_tenants: paid,
+                monthly_rent: rent,
+                work_orders: workOrders
+            });
+
+        }
+
     }
+     // Not a real hash but guarantees a unique ID
+     hashCode(mString) {
+        let returnable = 0;
+        
+        for(let x = 0; x < mString.length; x++)
+        {
+            returnable += mString.charCodeAt(x);
+        }
+
+        return returnable;
+      };
 
     componentWillMount(){
         
@@ -65,7 +92,10 @@ class PropertiesPage extends Component{
             snapshot.forEach(child => {
                 console.log(child);
                 
-                properties.push(<PropertyCard address={child.val().address} 
+                properties.push(<PropertyCard 
+                    key={child.key}
+                    address={child.val().address} 
+                    prop_key={child.key}
                     delinquent_tenants={child.val().delinquent_tenants}
                     maintenance_requests={child.val().maintenance_requests}
                     monthly_rent={child.val().monthly_rent}
@@ -106,7 +136,7 @@ class PropertiesPage extends Component{
                                 <input id="workOrderInput" className="prop-field form-control col-sm-2 col-6" type="number" placeholder="Work Orders"></input>
                                 <input id="rentTotalInput" className="prop-field form-control col-sm-2 col-6" type="number" placeholder="Rent Total"></input>
                                 <input id="paidTotalInput" className="prop-field form-control col-sm-2 col-6" type="number" placeholder="Paid Tenants"></input>
-                                <button id="submitForm" className="prop-field btn btn-success" >Add Property</button>
+                                <button onClick={this.submitNewProperty} id="submitForm" className="prop-field btn btn-success" >Add Property</button>
                             </div>
                             <hr></hr>
                         </form>
