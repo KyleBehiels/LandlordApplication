@@ -14,6 +14,7 @@ class PropertyCard extends Component{
         this.toggleTenantForm = this.toggleTenantForm.bind(this);
         this.submitTenant = this.submitTenant.bind(this);
         this.showTenantsModal = this.showTenantsModal.bind(this);
+        this.showWorkOrdersModal = this.showWorkOrdersModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
         userId = firebase.auth().currentUser.uid;
         this.state = {
@@ -64,21 +65,52 @@ class PropertyCard extends Component{
         let tenants = [];
         firebase.database().ref("/landlords/" + userId + "/properties/" + this.props.prop_key + "/tenants/").once("value", (snapshot)=> {
             snapshot.forEach(child => {
+                
+                let tenantKey = this.hashCode(child.val().first + child.val().last + child.val().phone + child.val().email);
                 tenants.push(
-                <div key={child.first + child.last} className="row">
-1                   <div className="col-6 col-md-3">{child.first + " " + child.last}</div>
-                    <div className="col-6 col-md-3">{child.email}</div>
-                    <div className="col-6 col-md-3">{child.phone}</div>
-                    <div className="col-6 col-md-3">{child.rent}</div>
-                </div>
+                <div key={tenantKey}>{child.val().first + " " + child.val().last + " | " + child.val().phone + " | " + child.val().email} <hr></hr></div>
                 );
             });
-        });
+            console.log(tenants);
 
-        this.setState({
-            InfoModal: <InfoModal title="Tenants" contents={tenants.map(ten => <div key={ten.key}>{ten}</div>)} hideModal={this.hideModal}></InfoModal>
+            let renderable = tenants.map(ten => <div key={ten.key}>{ten}</div>);
+            
+            console.log(renderable);
+            
+
+            this.setState({
+                InfoModal: <InfoModal title="Tenants" content={renderable} hideModal={this.hideModal}></InfoModal>
+            });
         });
     }
+
+    showWorkOrdersModal(){
+        let workOrders = [];
+        firebase.database().ref("/landlords/" + userId + "/properties/" + this.props.prop_key + "/work_orders/").once("value", (snapshot) => {
+            snapshot.forEach(child => {
+                
+                let workOrderKey = this.hashCode(child.val().date + child.val().description + child.val().origin);
+
+                workOrders.push(
+                    <div key={workOrderKey}>
+                        <h3>{child.val().origin}</h3> 
+                        <span className="subtitle">{child.val().date}</span>
+                        <br></br>
+                        {child.val().description}  
+                        <hr></hr>
+                    </div>
+                );
+            });
+            let renderable = workOrders.map(wo => <div key={wo.key}>{wo}</div>);
+
+            this.setState({
+                InfoModal: <InfoModal title="Work Orders" content={renderable} hideModal={this.hideModal}></InfoModal>
+            });
+
+        });
+    }
+
+
 
     submitTenant(){
         let tenantEmail = document.getElementById('tenant-email' + this.props.prop_key).value;
@@ -115,7 +147,7 @@ class PropertyCard extends Component{
                         <hr></hr>
                         <div className="d-flex justify-content-center">
                             <button onClick={this.showTenantsModal} className="prop-btn btn btn-default">View Tenants</button>
-                            <button className="prop-btn btn btn-default">View Work Orders</button>
+                            <button onClick={this.showWorkOrdersModal} className="prop-btn btn btn-default">View Work Orders</button>
                             <button onClick={this.toggleTenantForm} id={"toggle-tenant-btn" + this.props.prop_key} className="prop-btn btn btn-primary">Add Tenant +</button>
                         </div>
                         <div id={"new-tenant-form" + this.props.prop_key} className="card hidden">

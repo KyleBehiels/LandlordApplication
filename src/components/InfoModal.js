@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 class InfoModal extends Component{
 
     render(){
+        console.log(this.props.content);
+        
         return(
             <div id="modal-window">
                 <div onClick={this.props.hideModal} className="blanket"></div>
