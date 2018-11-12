@@ -32,7 +32,7 @@ $color5: rgba(226, 226, 226, 1);
 
 
 .blanket{
-    position: absolute ; 
+    position: fixed ; 
     top: 0;
     left: 0;
     height: 100vh;
@@ -41,14 +41,28 @@ $color5: rgba(226, 226, 226, 1);
     background-color: rgba(0, 0, 0, 0.3);
 }
 
+.tenant-manage-btn{
+    margin: 10px;
+}
+
 .modal-content{
-    position: absolute;
+    position: fixed;
     top: 20vh;
-    left: 30vw;
-    width: 40vw;
+    left: 25vw;
+    width: 50vw;
     height: 60vh;
     background-color: #FFF;
     z-index: 1001;
+}
+.highlighted{
+    background-color: lightblue;
+}
+
+.tenant-table{
+    width: 100%;
+}
+.tenant-manage-btn{
+    margin: 10px;
 }
 
 .subtitle{

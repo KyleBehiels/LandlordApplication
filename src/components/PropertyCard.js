@@ -68,7 +68,7 @@ class PropertyCard extends Component{
                 
                 let tenantKey = this.hashCode(child.val().first + child.val().last + child.val().phone + child.val().email);
                 tenants.push(
-                <div key={tenantKey}>{child.val().first + " " + child.val().last + " | " + child.val().phone + " | " + child.val().email} <hr></hr></div>
+                <div key={tenantKey}>{child.val().first + " " + child.val().last + " | " + child.val().phone + " | " + child.val().email + " | $" + child.val().rent} <hr></hr></div>
                 );
             });
             console.log(tenants);
