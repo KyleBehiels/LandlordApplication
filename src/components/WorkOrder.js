@@ -3,20 +3,27 @@ import firebase from '../components/firebase';
 
 // Props = {header, unit, time, description}
 
+let userId;
 
 class WorkOrder extends Component{
     constructor (props) {
-
+        userId = firebase.auth().currentUser.uid;
         super(props);
         this.finishWorkOrder = this.finishWorkOrder.bind(this);
 
     }
     finishWorkOrder(){
         console.log(this.props.tempkey);
+        firebase.database().ref("/landlords/" + userId + "/workorders/" + this.props.tempkey).remove();
+        let workorderCard = document.getElementById("workorder_card");
+        workorderCard.classList.add("hidden");
+        this.setState()
+        //return firebase.database().ref('items').child('ITEM_KEY').remove();
+
     }
     render(){
         return(
-            <div className="row">
+            <div className="row" id="workorder_card">
                 <div className="col-sm-12 col-md-16">
                     <div className="card">
                         <div className="card-body">

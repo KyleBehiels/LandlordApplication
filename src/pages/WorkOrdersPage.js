@@ -25,6 +25,19 @@ class WorkOrdersPage extends Component{
     componentWillMount(){
 
         // Get and build work orders
+        let properties = [];
+        let propertiesRef = firebase.database().ref("/landlords/" + userId + "/properties/");
+
+        propertiesRef.on("value", (snapshot) => {
+            snapshot.forEach((child) => {
+                let header;
+                console.log(child);
+
+
+                
+            });
+            this.setState({workorders: workorders});
+        });
 
         let workorders = [];
         let workordersRef = firebase.database().ref("/landlords/" + userId + "/workorders/");
