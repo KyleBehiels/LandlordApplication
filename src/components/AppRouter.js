@@ -125,7 +125,7 @@ class AppRouter extends Component {
               </li>
             </ul>
             <span className="ml-auto">
-              <button onClick={this.logout} className="float-right btn btn-primary">Logout</button>
+              <button onClick={this.logout} className="float-right btn btn-danger">Logout</button>
             </span>
             </div>
           </nav>
