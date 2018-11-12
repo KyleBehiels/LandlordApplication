@@ -27,6 +27,8 @@ class Dashboard extends Component{
         this.hashCode = this.hashCode.bind(this);
         this.state ={
             first_name: "",
+            events: [],
+            notifications: [],
             notifications: [<Notification></Notification>]
         }
     }
@@ -35,10 +37,11 @@ class Dashboard extends Component{
 
         // Get and build notifications
 
-        let notifications = [];
+        
         let notificationsRef = firebase.database().ref("/landlords/" + userId + "/notifications/");
 
         notificationsRef.on("value", (snapshot) => {
+            let notifications = [];
             snapshot.forEach((child) => {
                 let header;
                 switch (child.val().type) {
@@ -66,10 +69,11 @@ class Dashboard extends Component{
 
         // Get and build events
 
-        let events = [];
+        
         let eventsRef = firebase.database().ref("/landlords/" + userId + "/events/");
 
         eventsRef.on("value", (snapshot) => {
+            let events = [];
             snapshot.forEach((child) => {
                 let header;
                 switch (child.val().type) {
@@ -96,12 +100,12 @@ class Dashboard extends Component{
             this.setState({events: events});
         });
 
-        console.log(events);
+        // console.log(events);
         
-        this.setState({
-            notifications: notifications,
-            events: events
-        });
+        // this.setState({
+        //     notifications: notifications,
+        //     events: events
+        // });
     }
 
     componentDidMount() {
