@@ -28,7 +28,7 @@ class WorkOrder extends Component{
                     <div className="card">
                         <div className="card-body">
                             <h3>{this.props.header} <button onClick={this.finishWorkOrder} id="finish_button" className="btn float-right btn-primary">Finish</button></h3>
-                            <b>Unit: {this.props.unit} | Finish by: {this.props.time}</b>
+                            <b>Unit: {this.props.unit} - {this.props.propname} | Finish by: {this.props.time}</b>
                             <p>{this.props.description}</p>
                         </div>
                     </div>

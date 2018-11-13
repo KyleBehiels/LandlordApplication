@@ -9,9 +9,15 @@ import Event from '../components/Event';
 
 import {faBell} from '@fortawesome/free-solid-svg-icons';
 import {faCalendar} from '@fortawesome/free-solid-svg-icons';
+import {faTachometerAlt} from '@fortawesome/free-solid-svg-icons';
+
 
 library.add(faBell);
 library.add(faCalendar);
+library.add(faTachometerAlt);
+
+
+
 
 let firebase_database;
 
@@ -184,7 +190,7 @@ class Dashboard extends Component{
         return(
             <div>
                 <div className="jumbotron">
-                    <h2>Dashboard</h2>
+                    <h2><FontAwesomeIcon icon="tachometer-alt"></FontAwesomeIcon> Dashboard</h2>
                     <hr></hr>
                     <p>Hello {this.state.first_name}, this is your Dashboard! From here you can see notifications and important information. Take a look around!</p>
                     

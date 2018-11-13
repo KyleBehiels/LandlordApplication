@@ -1,12 +1,19 @@
 import React, {Component} from 'react';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import {faChartLine} from '@fortawesome/free-solid-svg-icons';
+
+library.add(faChartLine);
+
 class AnalyticsPage extends Component{
 
     render(){
         return(
             <div>
                 <div className="jumbotron">
-                    <h2>Analytics</h2>
+                    <h2><FontAwesomeIcon icon="chart-line"></FontAwesomeIcon> Analytics</h2>
                     <hr></hr>
                     <p>Hello Landlord, this is your Analytics Page! This page visualizes important data about your properties in order to aid in business decisions.</p>
                     

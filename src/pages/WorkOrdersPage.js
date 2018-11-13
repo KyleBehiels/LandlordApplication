@@ -73,6 +73,7 @@ class WorkOrdersPage extends Component{
                                                         prop_key={child.key}
                                                         unit={workorder.val().unit}
                                                         header={header}
+                                                        propname={child.val().address}
                                                         tempkey={workorder.key}
                                                         description={workorder.val().description}
                                                         time={workorder.val().date}    
