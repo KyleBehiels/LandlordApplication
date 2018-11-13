@@ -3,6 +3,23 @@
 
 A web application that allows landlords to manage tenants. Developed for COMP 3120 - Human Computer Interaction by Kyle Behiels, Joe Jacobson and Andrew Adamczyk.
 
+## Piper see here
+
+1. Install git from [here](https://git-scm.com/downloads) for your system. Git itself is open source and will not ask you to install any bloatware. For that reason it is ok to click ok through the installation.
+
+2. Open a terminal(MacOS or Linux) or Command Prompt (Windows).
+
+3. Use cd to navigate to the directory where you want to store this repository.  
+
+4. Run the command `git clone https://github.com/KyleBehiels/LandlordApplication` to clone the repo.
+
+5. Run the command `cd LandlordApplication` to enter the repository directory
+
+6. Install the projects dependencies with the command `npm install`
+
+7. Start the development server with `npm start`. This should open the application in your default web browser.
+
+
 ## Development
 
 
