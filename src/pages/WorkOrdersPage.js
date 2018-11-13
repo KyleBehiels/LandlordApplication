@@ -16,7 +16,6 @@ class WorkOrdersPage extends Component{
         this.toggleNewWorkOrderBox = this.toggleNewWorkOrderBox.bind(this);
         this.submitWorkOrder = this.submitWorkOrder.bind(this);
         this.hashCode = this.hashCode.bind(this);
-        this.theBlob = this.theBlob.bind(this);
         this.returnProperties = this.returnProperties.bind(this);
 
         this.state ={
@@ -144,7 +143,10 @@ class WorkOrdersPage extends Component{
         let workorderDescription = document.getElementById("workorder_description").value;
         let workorderUnit = document.getElementById("workorder_unit").value;
         let workorderType = document.getElementById("workorder_type").value;
+
+
         let workorderKey = this.hashCode(workorderDescription) + this.hashCode(workorderDate) + this.hashCode(workorderUnit) + this.hashCode(workorderType);
+
 
         firebase.database().ref("/landlords/" + userId + "/workorders/" + workorderKey).set({
             description: workorderDescription,
@@ -188,16 +190,7 @@ class WorkOrdersPage extends Component{
 
         return returnable;
       };
-      theBlob(mString) {
-        let returnable = 0;
-        
-        for(let x = 0; x < mString.length; x++)
-        {
-            returnable += mString.charCodeAt(x);
-        }
 
-        return returnable;
-      };
     returnProperties() {
     let properties = [];
     let propertiesRef = firebase.database().ref("/landlords/" + userId + "/properties/");
