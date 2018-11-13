@@ -16,7 +16,8 @@ class WorkOrdersPage extends Component{
         this.toggleNewWorkOrderBox = this.toggleNewWorkOrderBox.bind(this);
         this.submitWorkOrder = this.submitWorkOrder.bind(this);
         this.hashCode = this.hashCode.bind(this);
-
+        this.theBlob = this.theBlob.bind(this);
+        this.returnProperties = this.returnProperties.bind(this);
 
         this.state ={
             first_name: ""
@@ -36,7 +37,7 @@ class WorkOrdersPage extends Component{
 
                 
             });
-            this.setState({workorders: workorders});
+            this.setState({properties: properties});
         });
 
         let workorders = [];
@@ -113,6 +114,11 @@ class WorkOrdersPage extends Component{
                                             <option value="upgrade">Upgrade</option>
 
                                         </select>
+                                        <label htmlFor="workorder_type">Property</label>
+                                        
+                                        <select id="property_select" className="form-control">
+                                            {this.returnProperties()}
+                                        </select>
 
                                         <label htmlFor="workorder_date">Finish by</label>
                                         <input id="workorder_date" className="form-control" type="date"></input>
@@ -154,6 +160,7 @@ class WorkOrdersPage extends Component{
     }
 
     toggleNewWorkOrderBox(){
+        this.returnProperties();
         let toggleButton = document.getElementById("new_workorder_button");
         let workorderBox = document.getElementById("new_workorder_box");
         let btnText = toggleButton.innerHTML;
@@ -181,6 +188,36 @@ class WorkOrdersPage extends Component{
 
         return returnable;
       };
+      theBlob(mString) {
+        let returnable = 0;
+        
+        for(let x = 0; x < mString.length; x++)
+        {
+            returnable += mString.charCodeAt(x);
+        }
+
+        return returnable;
+      };
+    returnProperties() {
+    let properties = [];
+    let propertiesRef = firebase.database().ref("/landlords/" + userId + "/properties/");
+    let propertiesName = [];
+    let tempx = 0;
+    let propsNames = [];
+    propertiesRef.on("value", (snapshot) => {
+        snapshot.forEach((child) => {
+            //console.log(child.key);
+            //console.log(child.val().address);
+            propertiesName[tempx] = child.val().address;
+            console.log(propertiesName[tempx]);
+            propsNames.push(<option value={child.key}>{propertiesName[tempx]}</option>);
+            //return (propstring);
+            tempx++;
+        }); 
+        
+    });
+    return (propsNames);
+    };
 
 }
 
