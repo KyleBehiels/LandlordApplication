@@ -6379,6 +6379,9 @@ a.text-dark:hover, a.text-dark:focus {
   margin-left: auto;
   margin-right: auto; }
 
+.workorder {
+  margin: 10px; }
+
 .work_order_text {
   color: #888; }
 

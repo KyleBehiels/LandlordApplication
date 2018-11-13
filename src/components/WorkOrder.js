@@ -13,13 +13,13 @@ class WorkOrder extends Component{
 
     }
     finishWorkOrder(){
-        console.log(this.props.tempkey);
-        firebase.database().ref("/landlords/" + userId + "/workorders/" + this.props.tempkey).remove();
-        let workorderCard = document.getElementById("workorder_card");
-        workorderCard.classList.add("hidden");
-        this.setState()
-        //return firebase.database().ref('items').child('ITEM_KEY').remove();
 
+        if(window.confirm("Are you sure you want to finish this work order?")){
+            console.log(this.props.tempkey);
+            firebase.database().ref("/landlords/" + userId + "/properties/" + this.props.prop_key + "/work_orders/" + this.props.tempkey).remove();
+    
+        }
+        
     }
     render(){
         return(

@@ -26,7 +26,8 @@ class WorkOrdersPage extends Component{
         this.returnProperties = this.returnProperties.bind(this);
 
         this.state ={
-            first_name: ""
+            first_name: "",
+            workorders: []
         }
     }
     componentWillMount(){
@@ -47,40 +48,39 @@ class WorkOrdersPage extends Component{
         });
 
         let workorders = [];
-        let workordersRef = firebase.database().ref("/landlords/" + userId + "/workorders/");
+        let propsref = firebase.database().ref("/landlords/" + userId + "/properties/");
 
-        workordersRef.on("value", (snapshot) => {
+        propsref.on("value", (snapshot) => {
+            workorders = [];
             snapshot.forEach((child) => {
-                let header;
-                switch (child.val().type) {
-                    case ("maintenance") : 
-                        header = "Maintenance";
-                    break;
-                    case ("upgrade"):
-                        header = "Upgrade"
-                        break;
-                    default:
-                        header = "Work Order"
-                    break;
+                firebase.database().ref("/landlords/" + userId + "/properties/" + child.key + "/work_orders").once("value", (workorderObjects) => {
+                    workorderObjects.forEach(workorder => {
+                        let header;
+                        switch (workorder.val().type) {
+                            case ("maintenance") : 
+                                header = "Maintenance";
+                            break;
+                            case ("upgrade"):
+                                header = "Upgrade"
+                                break;
+                            default:
+                                header = "Work Order"
+                            break;
 
-                }
+                        }
 
-                workorders.push(<WorkOrder key={child.key}
-                                                 unit={child.val().unit}
-                                                 header={header}
-                                                 tempkey={child.key}
-                                                 description={child.val().description}
-                                                 time={child.val().time}    
-                                                     ></WorkOrder>); 
-                
+                        workorders.push(<WorkOrder className="workorder" key={workorder.key}
+                                                        prop_key={child.key}
+                                                        unit={workorder.val().unit}
+                                                        header={header}
+                                                        tempkey={workorder.key}
+                                                        description={workorder.val().description}
+                                                        time={workorder.val().date}    
+                                                            ></WorkOrder>); 
+                    });
+                    this.setState({workorders: workorders});
+                });
             });
-            this.setState({workorders: workorders});
-        });
-
-        console.log(workorders);
-        
-        this.setState({
-            workorders: workorders
         });
     }
 
@@ -120,7 +120,7 @@ class WorkOrdersPage extends Component{
                                             <option value="upgrade">Upgrade</option>
 
                                         </select>
-                                        <label htmlFor="workorder_type">Property</label>
+                                        <label htmlFor="property_select">Property</label>
                                         
                                         <select id="property_select" className="form-control">
                                             {this.returnProperties()}
@@ -150,16 +150,18 @@ class WorkOrdersPage extends Component{
         let workorderDescription = document.getElementById("workorder_description").value;
         let workorderUnit = document.getElementById("workorder_unit").value;
         let workorderType = document.getElementById("workorder_type").value;
+        let propertySelect = document.getElementById("property_select").value;
 
 
         let workorderKey = this.hashCode(workorderDescription) + this.hashCode(workorderDate) + this.hashCode(workorderUnit) + this.hashCode(workorderType);
 
 
-        firebase.database().ref("/landlords/" + userId + "/workorders/" + workorderKey).set({
+        firebase.database().ref("/landlords/" + userId + "/properties/" + propertySelect + "/work_orders/" + workorderKey).set({
             description: workorderDescription,
-            time: workorderDate,
+            date: workorderDate,
             type: workorderType,
-            unit: workorderUnit
+            unit: workorderUnit,
+            origin: "Manual Creation"
         });
 
         console.log(workorderDate);
@@ -199,6 +201,7 @@ class WorkOrdersPage extends Component{
       };
 
     returnProperties() {
+<<<<<<< Updated upstream
     let propertiesRef = firebase.database().ref("/landlords/" + userId + "/properties/");
     let propertiesName = [];
     let tempx = 0;
@@ -216,6 +219,27 @@ class WorkOrdersPage extends Component{
     });
     return (propsNames);
     };
+=======
+        let properties = [];
+        let propertiesRef = firebase.database().ref("/landlords/" + userId + "/properties/");
+        let propertiesName = [];
+        let tempx = 0;
+        let propsNames = [];
+        propertiesRef.on("value", (snapshot) => {
+            snapshot.forEach((child) => {
+                //console.log(child.key);
+                //console.log(child.val().address);
+                propertiesName[tempx] = child.val().address;
+                console.log(propertiesName[tempx]);
+                propsNames.push(<option value={child.key}>{propertiesName[tempx]}</option>);
+                //return (propstring);
+                tempx++;
+            }); 
+            
+        });
+        return (propsNames);
+    }
+>>>>>>> Stashed changes
 
 }
 
