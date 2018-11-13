@@ -161,7 +161,6 @@ class Dashboard extends Component{
         {
             returnable += mString.charCodeAt(x);
         }
-
         return returnable;
       };
 
