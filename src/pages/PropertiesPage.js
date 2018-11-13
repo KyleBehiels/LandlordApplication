@@ -5,6 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import firebase from '../components/firebase';
 import PropertyCard from '../components/PropertyCard'
 
+
+import {faBuilding} from '@fortawesome/free-solid-svg-icons';
+
+library.add(faBuilding);
+
+
 let userId, userRef;
 
 class PropertiesPage extends Component{
@@ -116,7 +122,7 @@ class PropertiesPage extends Component{
         return(
             <div>
                 <div className="jumbotron">
-                    <h2>Properties</h2>
+                    <h2><FontAwesomeIcon icon="building"></FontAwesomeIcon> Properties</h2>
                     <hr></hr>
                     <p>Hello {this.state.first_name}, this is your Properties Page! From this page you can manage the properties that you currently own and view information about each.</p>
                     

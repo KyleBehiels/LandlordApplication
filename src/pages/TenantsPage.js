@@ -1,6 +1,13 @@
 import React, {Component} from 'react';
 import firebase from '../components/firebase';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import {faUsers} from '@fortawesome/free-solid-svg-icons';
+
+library.add(faUsers);
+
 let userId;
 let tenantList = [];
 
@@ -274,7 +281,7 @@ class TenantsPage extends Component{
         return(
             <div>
                 <div className="jumbotron">
-                    <h2>Tenants</h2>
+                    <h2><FontAwesomeIcon icon="users"></FontAwesomeIcon> Tenants</h2>
                     <hr></hr>
                     <p>Hello Landlord, this is your Tenants Page! From this page you can manage the status of the tenants living in your properties.</p>
                     

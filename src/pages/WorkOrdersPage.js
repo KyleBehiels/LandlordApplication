@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
 
 import firebase from '../components/firebase';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import WorkOrder from '../components/WorkOrder';
+
+import {faWrench} from '@fortawesome/free-solid-svg-icons';
+
+library.add(faWrench);
 
 let firebase_database;
 
@@ -93,7 +100,7 @@ class WorkOrdersPage extends Component{
         return(
             <div>
                 <div className="jumbotron">
-                    <h2>Work Orders</h2>
+                    <h2><FontAwesomeIcon icon="wrench"></FontAwesomeIcon> Work Orders</h2>
                     <hr></hr>
                     <p>Hello {this.state.first_name}, this is your WorkOrders Page! When tenants submit work orders for your properties they will appear here.</p>
                     
@@ -192,7 +199,6 @@ class WorkOrdersPage extends Component{
       };
 
     returnProperties() {
-    let properties = [];
     let propertiesRef = firebase.database().ref("/landlords/" + userId + "/properties/");
     let propertiesName = [];
     let tempx = 0;
@@ -204,7 +210,6 @@ class WorkOrdersPage extends Component{
             propertiesName[tempx] = child.val().address;
             console.log(propertiesName[tempx]);
             propsNames.push(<option value={child.key}>{propertiesName[tempx]}</option>);
-            //return (propstring);
             tempx++;
         }); 
         
