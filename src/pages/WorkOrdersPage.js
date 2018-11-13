@@ -201,26 +201,6 @@ class WorkOrdersPage extends Component{
       };
 
     returnProperties() {
-<<<<<<< Updated upstream
-    let propertiesRef = firebase.database().ref("/landlords/" + userId + "/properties/");
-    let propertiesName = [];
-    let tempx = 0;
-    let propsNames = [];
-    propertiesRef.on("value", (snapshot) => {
-        snapshot.forEach((child) => {
-            //console.log(child.key);
-            //console.log(child.val().address);
-            propertiesName[tempx] = child.val().address;
-            console.log(propertiesName[tempx]);
-            propsNames.push(<option value={child.key}>{propertiesName[tempx]}</option>);
-            tempx++;
-        }); 
-        
-    });
-    return (propsNames);
-    };
-=======
-        let properties = [];
         let propertiesRef = firebase.database().ref("/landlords/" + userId + "/properties/");
         let propertiesName = [];
         let tempx = 0;
@@ -232,14 +212,12 @@ class WorkOrdersPage extends Component{
                 propertiesName[tempx] = child.val().address;
                 console.log(propertiesName[tempx]);
                 propsNames.push(<option value={child.key}>{propertiesName[tempx]}</option>);
-                //return (propstring);
                 tempx++;
             }); 
             
         });
         return (propsNames);
-    }
->>>>>>> Stashed changes
+    };
 
 }
 
