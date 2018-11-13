@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "./Landlord/precache-manifest.bd4304a6f750d52feeb1e4befbe31afa.js"
+  "/LandlordApplication/Landlord/precache-manifest.673a97c644583592a0d6c6d5275813a3.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("./Landlord/index.html", {
+workbox.routing.registerNavigationRoute("/LandlordApplication/Landlord/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
