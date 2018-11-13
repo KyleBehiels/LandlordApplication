@@ -160,8 +160,17 @@ class TenantsPage extends Component{
                 phone: tenantPhone,
                 rent: tenantRent
             });
+            
 
             alert( tenantFirst + " " + tenantLast + " was added successfully!");
+
+            let indexval = tenantEmail.split("@")[0];
+            firebase.database().ref("/tenantindex/" + indexval).set({
+                key: tenantKey,
+                landlord_key: userId,
+                propid: boxId,
+                tenantname: tenantFirst + " " + tenantLast
+            });
 
         }
         else{

@@ -121,6 +121,7 @@ class PropertyCard extends Component{
         let tenantKey =this.hashCode(tenantEmail) + this.hashCode(tenantFirst) + this.hashCode(tenantLast) + this.hashCode(tenantRent) + this.hashCode(tenantPhone);
         
         if(tenantEmail !== "" &&tenantFirst !== "" &&tenantLast !== "" &&tenantRent !== "" &&tenantPhone !== "" ){
+
             firebase.database().ref("/landlords/" + userId + "/properties/" + this.props.prop_key + "/tenants/" + tenantKey).set({
                 email: tenantEmail,
                 first: tenantFirst,
@@ -128,7 +129,15 @@ class PropertyCard extends Component{
                 rent: tenantRent,
                 phone: tenantPhone
             });
-            alert("Tenant added!")
+            
+            alert("Tenant added!");
+            let indexval = tenantEmail.split("@")[0];
+            firebase.database().ref("/tenantindex/" + indexval).set({
+                key: tenantKey,
+                landlord_key: userId,
+                propid: this.props.prop_key,
+                tenantname: tenantFirst + " " + tenantLast
+            });
         }
         else{
             alert("Please fill out all of the fields!");
